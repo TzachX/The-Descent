@@ -1,0 +1,11 @@
+GameManager - Running all the other managers, doesn't have a specific functunality
+
+LevelGenerator - Creates the levels, holds the data for the levels
+
+UIManager - The only one that holds the UI components and activate the delegates for them
+
+TurnManager - Responsible for managing the turns and checking who won
+
+InputManager - Checks the input and activate the functions accordingly
+
+SpawnManager - Spawns everything that is not the level itself (basically, the player and enemies)

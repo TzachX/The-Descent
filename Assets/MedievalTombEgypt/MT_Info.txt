@@ -1,0 +1,6 @@
+Greetings User!
+
+You can improve this scene by using Image Effects!
+You can find screeshot with IF settings in package folder.
+
+Have fun!

@@ -1,0 +1,454 @@
+; FBX 6.1.0 project file
+; Created by Blender FBX Exporter
+; for support mail: ideasman42@gmail.com
+; ----------------------------------------------------
+
+FBXHeaderExtension:  {
+	FBXHeaderVersion: 1003
+	FBXVersion: 6100
+	CreationTimeStamp:  {
+		Version: 1000
+		Year: 2017
+		Month: 07
+		Day: 31
+		Hour: 16
+		Minute: 54
+		Second: 37
+		Millisecond: 0
+	}
+	Creator: "FBX SDK/FBX Plugins build 20070228"
+	OtherFlags:  {
+		FlagPLE: 0
+	}
+}
+CreationTime: "2017-07-31 16:54:37:000"
+Creator: "Blender version 2.78 (sub 0)"
+
+; Object definitions
+;------------------------------------------------------------------
+
+Definitions:  {
+	Version: 100
+	Count: 5
+	ObjectType: "Model" {
+		Count: 1
+	}
+	ObjectType: "Geometry" {
+		Count: 1
+	}
+	ObjectType: "Material" {
+		Count: 1
+	}
+	ObjectType: "Texture" {
+		Count: 1
+	}
+	ObjectType: "Video" {
+		Count: 1
+	}
+	ObjectType: "Pose" {
+		Count: 1
+	}
+	ObjectType: "GlobalSettings" {
+		Count: 1
+	}
+}
+
+; Object properties
+;------------------------------------------------------------------
+
+Objects:  {
+	Model: "Model::td_e_sarcophagus", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "bool", "",0
+			Property: "Visibility", "Visibility", "A+",1
+			Property: "Lcl Translation", "Lcl Translation", "A+",0.000000000000000,0.000000000000000,0.000000000000000
+			Property: "Lcl Rotation", "Lcl Rotation", "A+",0.000000000000000,0.000000000000000,0.000000000000000
+			Property: "Lcl Scaling", "Lcl Scaling", "A+",1.000000000000000,1.000000000000000,1.000000000000000
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",0,0,0
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",0,0,0
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",0
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "InheritType", "enum", "",0
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",1,1,1
+			Property: "ScalingMax", "Vector3D", "",1,1,1
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Color", "Color", "A",0.8,0.8,0.8
+			Property: "Size", "double", "",100
+			Property: "Look", "enum", "",1
+		}
+		MultiLayer: 0
+		MultiTake: 1
+		Shading: Y
+		Culling: "CullingOff"
+		Vertices: 0.572740,0.847522,0.241459,0.554935,1.051871,0.164604,0.966994,0.847522,0.225588,0.915369,1.051871,0.164604,
+		          0.374413,1.051871,0.392732,0.376224,0.847522,0.482862,-0.692147,1.051871,0.202018,-0.762025,0.847522,0.290144,
+		          0.756608,0.847522,0.272117,0.735152,1.051871,0.197885,-0.117351,0.847522,0.330517,-0.089266,1.051871,0.269511,
+		          -0.887252,1.147081,0.236856,-0.957130,0.847522,0.290144,-1.204792,0.000000,0.683473,-1.194557,0.202628,0.677667,
+		          1.204793,-0.000000,0.683473,1.194558,0.202628,0.677667,-1.033245,0.185713,0.552162,-1.111485,0.782635,0.593974,
+		          1.033245,0.185713,0.552162,1.111485,0.782635,0.593973,1.031503,0.912339,0.491329,-1.031502,0.912339,0.491330,
+		          0.572740,0.847522,-0.241459,0.554935,1.051871,-0.164604,0.966994,0.847522,-0.225589,0.915369,1.051871,-0.164604,
+		          0.374412,1.051871,-0.392732,0.376224,0.847522,-0.482862,-0.692147,1.051871,-0.202018,-0.762025,0.847522,-0.290144,
+		          0.756608,0.847522,-0.272118,0.735152,1.051871,-0.197886,1.020415,0.847522,-0.000000,0.961129,1.051871,-0.000000,
+		          0.554935,1.051871,-0.000000,0.374413,1.051871,-0.000000,-0.692147,1.051871,0.000000,0.735152,1.051871,-0.000000,
+		          -0.117351,0.847522,-0.330517,-0.089266,1.051871,-0.269511,-0.089266,1.051871,-0.000000,-0.887252,1.147081,-0.236856,
+		          -0.957130,0.847522,-0.290144,-0.990364,0.847522,0.000000,-0.920485,1.147081,0.000000,-1.204792,0.000000,-0.683473,
+		          -1.194557,0.202628,-0.677667,1.204792,-0.000000,-0.683473,1.194558,0.202628,-0.677667,-1.033245,0.185713,-0.552162,
+		          -1.111485,0.782635,-0.593973,1.033245,0.185713,-0.552162,1.111485,0.782635,-0.593974,1.031503,0.912339,-0.491330,
+		          -1.031502,0.912339,-0.491329,1.204792,-0.000000,-0.000000,1.194558,0.202628,-0.000000,-1.204792,0.000000,0.000000,
+		          -1.194557,0.202628,0.000000,1.033245,0.185713,-0.000000,1.111485,0.782635,-0.000000,-1.033245,0.185713,0.000000,
+		          -1.111485,0.782635,0.000000,1.031503,0.912339,-0.000000,-1.031502,0.912339,0.000000
+		PolygonVertexIndex: 34,35,3,-3,8,9,1,-1,0,1,4,-6,6,38,46,-13,10,11,6,-8,2,3,9,-9,3,35,39,-10,11,42,38,-7,
+		                    1,36,37,-5,9,39,36,-2,4,37,42,-12,5,4,11,-11,13,12,46,-46,7,6,12,-14,57,58,17,-17,16,17,15,-15,
+		                    61,62,21,-21,20,21,19,-19,19,21,22,-24,64,19,23,-67,17,58,60,-16,14,15,60,-60,22,65,66,-24,21,62,65,-23,
+		                    18,19,64,-64,34,26,27,-36,32,24,25,-34,24,29,28,-26,30,43,46,-39,40,31,30,-42,26,32,33,-28,27,33,39,-36,
+		                    41,30,38,-43,25,28,37,-37,33,25,36,-40,28,41,42,-38,29,40,41,-29,44,45,46,-44,31,44,43,-31,57,49,50,-59,
+		                    49,47,48,-51,61,53,54,-63,53,51,52,-55,52,56,55,-55,64,66,56,-53,50,48,60,-59,47,59,60,-49,55,56,66,-66,
+		                    54,55,65,-63,51,63,64,-53
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0.955345,0.295493,-0.000000,0.652913,0.757408,0.000000,0.468612,0.740501,0.481674,0.639559,0.363067,0.677604,
+			         0.023120,0.339035,0.940490,0.001343,0.787408,0.616413,0.139012,0.912717,0.384167,0.346937,0.347932,0.870964,
+			         0.346937,0.347932,0.870964,0.139012,0.912717,0.384167,0.232826,0.739341,0.631764,0.246654,0.373545,0.894218,
+			         0.145695,0.792077,0.592730,0.208533,0.977996,0.000000,-0.491836,0.870663,0.000000,-0.303049,0.780389,0.546922,
+			         -0.166197,0.355796,0.919667,-0.102756,0.835658,0.539537,0.145695,0.792077,0.592730,0.051830,0.285193,0.957068,
+			         0.639559,0.363067,0.677604,0.468612,0.740501,0.481674,0.001343,0.787408,0.616413,0.023120,0.339035,0.940490,
+			         0.468612,0.740501,0.481674,0.652913,0.757408,0.000000,0.000000,1.000000,0.000000,0.001343,0.787408,0.616413,
+			         -0.102756,0.835658,0.539537,0.000000,1.000000,0.000000,0.208533,0.977996,0.000000,0.145695,0.792077,0.592730,
+			         0.139012,0.912717,0.384167,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.232826,0.739341,0.631764,
+			         0.001343,0.787408,0.616413,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.139012,0.912717,0.384167,
+			         0.232826,0.739341,0.631764,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,-0.102756,0.835658,0.539537,
+			         0.246654,0.373545,0.894218,0.232826,0.739341,0.631764,-0.102756,0.835658,0.539537,-0.166197,0.355796,0.919667,
+			         -0.593774,0.324265,0.736400,-0.303049,0.780389,0.546922,-0.491836,0.870663,0.000000,-0.971389,0.237494,0.000000,
+			         0.051830,0.285193,0.957068,0.145695,0.792077,0.592730,-0.303049,0.780389,0.546922,-0.593774,0.324265,0.736400,
+			         0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,
+			         0.000000,0.028642,0.999590,0.000000,0.028642,0.999590,0.000000,0.028642,0.999590,0.000000,0.028642,0.999590,
+			         0.991519,-0.129961,-0.000000,0.991519,-0.129961,-0.000000,0.991519,-0.129961,-0.000000,0.991519,-0.129961,-0.000000,
+			         0.000000,-0.069874,0.997556,0.000000,-0.069874,0.997556,0.000000,-0.069874,0.997556,0.000000,-0.069874,0.997556,
+			         0.000000,0.620559,0.784160,0.000000,0.620559,0.784160,0.000000,0.620559,0.784160,0.000000,0.620559,0.784160,
+			         -0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,
+			         0.000000,1.000000,-0.000000,0.000000,1.000000,-0.000000,0.000000,1.000000,-0.000000,0.000000,1.000000,-0.000000,
+			         -0.998727,0.050445,0.000000,-0.998727,0.050445,0.000000,-0.998727,0.050445,0.000000,-0.998727,0.050445,0.000000,
+			         0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         0.851178,0.524877,-0.000000,0.851178,0.524877,-0.000000,0.851178,0.524877,-0.000000,0.851178,0.524877,-0.000000,
+			         -0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000,
+			         0.955345,0.295493,-0.000000,0.639559,0.363067,-0.677604,0.468612,0.740501,-0.481674,0.652913,0.757408,0.000000,
+			         0.023120,0.339035,-0.940490,0.346937,0.347932,-0.870964,0.139012,0.912717,-0.384167,0.001343,0.787408,-0.616413,
+			         0.346937,0.347932,-0.870964,0.246654,0.373545,-0.894218,0.232826,0.739341,-0.631764,0.139012,0.912717,-0.384167,
+			         0.145695,0.792077,-0.592730,-0.303049,0.780389,-0.546922,-0.491836,0.870663,0.000000,0.208533,0.977996,0.000000,
+			         -0.166197,0.355796,-0.919667,0.051830,0.285193,-0.957068,0.145695,0.792077,-0.592730,-0.102756,0.835658,-0.539537,
+			         0.639559,0.363067,-0.677604,0.023120,0.339035,-0.940490,0.001343,0.787408,-0.616413,0.468612,0.740501,-0.481674,
+			         0.468612,0.740501,-0.481674,0.001343,0.787408,-0.616413,0.000000,1.000000,0.000000,0.652913,0.757408,0.000000,
+			         -0.102756,0.835658,-0.539537,0.145695,0.792077,-0.592730,0.208533,0.977996,0.000000,0.000000,1.000000,0.000000,
+			         0.139012,0.912717,-0.384167,0.232826,0.739341,-0.631764,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         0.001343,0.787408,-0.616413,0.139012,0.912717,-0.384167,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         0.232826,0.739341,-0.631764,-0.102756,0.835658,-0.539537,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         0.246654,0.373545,-0.894218,-0.166197,0.355796,-0.919667,-0.102756,0.835658,-0.539537,0.232826,0.739341,-0.631764,
+			         -0.593774,0.324265,-0.736400,-0.971389,0.237494,0.000000,-0.491836,0.870663,0.000000,-0.303049,0.780389,-0.546922,
+			         0.051830,0.285193,-0.957068,-0.593774,0.324265,-0.736400,-0.303049,0.780389,-0.546922,0.145695,0.792077,-0.592730,
+			         0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,0.998727,0.050445,-0.000000,
+			         -0.000000,0.028642,-0.999590,-0.000000,0.028642,-0.999590,-0.000000,0.028642,-0.999590,-0.000000,0.028642,-0.999590,
+			         0.991519,-0.129961,0.000000,0.991519,-0.129961,0.000000,0.991519,-0.129961,0.000000,0.991519,-0.129961,0.000000,
+			         -0.000000,-0.069874,-0.997556,-0.000000,-0.069874,-0.997556,-0.000000,-0.069874,-0.997556,-0.000000,-0.069874,-0.997556,
+			         0.000000,0.620559,-0.784160,0.000000,0.620559,-0.784160,0.000000,0.620559,-0.784160,0.000000,0.620559,-0.784160,
+			         -0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,-0.851178,0.524878,0.000000,
+			         0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         -0.998727,0.050446,0.000000,-0.998727,0.050446,0.000000,-0.998727,0.050446,0.000000,-0.998727,0.050446,0.000000,
+			         0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,0.000000,1.000000,0.000000,
+			         0.851178,0.524877,0.000000,0.851178,0.524877,0.000000,0.851178,0.524877,0.000000,0.851178,0.524877,0.000000,
+			         -0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000,-0.991519,-0.129961,0.000000
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "UVMap"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.749773,0.457137,0.884032,0.007181,0.988555,0.007181,0.794057,0.010021,0.869068,0.010021,0.502802,0.257940,
+			    0.492556,0.198558,0.556756,0.182209,0.566610,0.245198,0.336503,0.335236,0.323410,0.279430,0.323448,0.207428,
+			    0.155448,0.202070,0.202230,0.203969,0.117121,0.195606,0.650099,0.146784,0.560108,0.164965,0.017144,0.231698,
+			    0.062875,0.210449,0.009826,0.171377,0.091749,0.236805,0.064727,0.171513,0.057697,0.275310,0.134777,0.256596,
+			    0.095041,0.302184,0.117434,0.309075,0.198099,0.305745,0.095846,0.164966,0.988555,0.378203,0.884032,0.378203,
+			    0.011494,0.118874,0.780867,0.376706,0.749773,0.377930,0.622182,0.008607,0.644460,0.118874,0.535668,0.140854,
+			    0.521048,0.029040,0.120285,0.140854,0.134905,0.029040,0.520723,0.171761,0.135231,0.171762,0.869068,0.326597,
+			    0.518608,0.324845,0.187404,0.349350,0.203335,0.364463,0.649814,0.243824,0.637325,0.166986,0.573116,0.333192,
+			    0.749773,0.008117,0.780867,0.010034,0.780867,0.090860,0.749773,0.089635,0.794057,0.326597,0.005855,0.146784,
+			    0.033772,0.008607,0.780867,0.457137
+			UVIndex: 19,21,18,17,22,20,23,24,25,23,26,43,5,6,7,8,9,10,5,42,17,18,20,22,18,21,14,20,10,11,6,5,23,12,13,26,20,14,12,23,26,13,11,10,44,26,10,9,45,8,7,46,42,5,8,47,48,49,50,51,51,50,31,32,
+			         33,34,35,36,36,35,37,38,37,35,39,40,30,37,27,53,28,29,1,2,32,31,55,0,41,52,3,4,35,34,15,16,38,37,30,54,19,17,18,21,22,24,23,20,25,43,26,23,5,8,7,6,9,42,5,10,17,22,20,18,18,20,14,21,
+			         10,5,6,11,23,26,13,12,20,23,12,14,26,10,11,13,44,9,10,26,45,46,7,8,42,47,8,5,48,51,50,49,51,32,31,50,33,36,35,34,36,38,37,35,37,40,39,35,30,53,27,37,28,2,1,29,32,0,55,31,41,4,3,52,
+			         35,16,15,34,38,54,30,37
+		}
+		LayerElementTexture: 0 {
+			Version: 101
+			Name: "UVMap"
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			BlendMode: "Translucent"
+			TextureAlpha: 1
+			TextureId: 0
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementTexture"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+		}
+	}
+	Material: "Material::td_e_mat_02__td_egypt_props_png", "" {
+		Version: 102
+		ShadingModel: "lambert"
+		MultiLayer: 0
+		Properties60:  {
+			Property: "ShadingModel", "KString", "", "Lambert"
+			Property: "MultiLayer", "bool", "",0
+			Property: "EmissiveColor", "ColorRGB", "",0.8000,0.8000,0.8000
+			Property: "EmissiveFactor", "double", "",0.0000
+			Property: "AmbientColor", "ColorRGB", "",1.0000,1.0000,1.0000
+			Property: "AmbientFactor", "double", "",1.0000
+			Property: "DiffuseColor", "ColorRGB", "",0.8000,0.8000,0.8000
+			Property: "DiffuseFactor", "double", "",0.8000
+			Property: "Bump", "Vector3D", "",0,0,0
+			Property: "TransparentColor", "ColorRGB", "",1,1,1
+			Property: "TransparencyFactor", "double", "",0.0000
+			Property: "SpecularColor", "ColorRGB", "",1.0000,1.0000,1.0000
+			Property: "SpecularFactor", "double", "",0.5000
+			Property: "ShininessExponent", "double", "",12.3
+			Property: "ReflectionColor", "ColorRGB", "",0,0,0
+			Property: "ReflectionFactor", "double", "",1
+			Property: "Emissive", "ColorRGB", "",0,0,0
+			Property: "Ambient", "ColorRGB", "",1.0,1.0,1.0
+			Property: "Diffuse", "ColorRGB", "",0.8,0.8,0.8
+			Property: "Specular", "ColorRGB", "",1.0,1.0,1.0
+			Property: "Shininess", "double", "",12.3
+			Property: "Opacity", "double", "",1.0
+			Property: "Reflectivity", "double", "",0
+		}
+	}
+	Video: "Video::td_egypt_props_png", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "Path", "charptr", "", "td_egypt_props.png"
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "PlaySpeed", "double", "",1
+			Property: "Offset", "KTime", "",0
+			Property: "InterlaceMode", "enum", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "td_egypt_props.png"
+		RelativeFilename: "E:\4Work\WIP3\TinyDungeons - Egypt\td_egypt_props.png"
+	}
+	Texture: "Texture::td_egypt_props_png", "TextureVideoClip" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::td_egypt_props_png"
+		Properties60:  {
+			Property: "Translation", "Vector", "A+",0,0,0
+			Property: "Rotation", "Vector", "A+",0,0,0
+			Property: "Scaling", "Vector", "A+",1,1,1
+			Property: "Texture alpha", "Number", "A+",0
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UseMaterial", "bool", "",0
+			Property: "UseMipMap", "bool", "",0
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "VideoProperty", "object", ""
+		}
+		Media: "Video::td_egypt_props_png"
+		FileName: "td_egypt_props.png"
+		RelativeFilename: "E:\4Work\WIP3\TinyDungeons - Egypt\td_egypt_props.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Pose: "Pose::BIND_POSES", "BindPose" {
+		Type: "BindPose"
+		Version: 100
+		Properties60:  {
+		}
+		NbPoseNodes: 1
+		PoseNode:  {
+			Node: "Model::td_e_sarcophagus"
+			Matrix: 0.000000075497901,0.000000000000000,-1.000000000000000,0.000000000000000,-1.000000000000000,0.000000000000000,-0.000000075497901,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
+		}
+	}
+	GlobalSettings:  {
+		Version: 1000
+		Properties60:  {
+			Property: "UpAxis", "int", "",1
+			Property: "UpAxisSign", "int", "",1
+			Property: "FrontAxis", "int", "",2
+			Property: "FrontAxisSign", "int", "",1
+			Property: "CoordAxis", "int", "",0
+			Property: "CoordAxisSign", "int", "",1
+			Property: "UnitScaleFactor", "double", "",1
+		}
+	}
+}
+
+; Object relations
+;------------------------------------------------------------------
+
+Relations:  {
+	Model: "Model::td_e_sarcophagus", "Mesh" {
+	}
+	Model: "Model::Producer Perspective", "Camera" {
+	}
+	Model: "Model::Producer Top", "Camera" {
+	}
+	Model: "Model::Producer Bottom", "Camera" {
+	}
+	Model: "Model::Producer Front", "Camera" {
+	}
+	Model: "Model::Producer Back", "Camera" {
+	}
+	Model: "Model::Producer Right", "Camera" {
+	}
+	Model: "Model::Producer Left", "Camera" {
+	}
+	Model: "Model::Camera Switcher", "CameraSwitcher" {
+	}
+	Material: "Material::td_e_mat_02__td_egypt_props_png", "" {
+	}
+	Texture: "Texture::td_egypt_props_png", "TextureVideoClip" {
+	}
+	Video: "Video::td_egypt_props_png", "Clip" {
+	}
+}
+
+; Object connections
+;------------------------------------------------------------------
+
+Connections:  {
+	Connect: "OO", "Model::td_e_sarcophagus", "Model::Scene"
+	Connect: "OO", "Material::td_e_mat_02__td_egypt_props_png", "Model::td_e_sarcophagus"
+	Connect: "OO", "Texture::td_egypt_props_png", "Model::td_e_sarcophagus"
+	Connect: "OO", "Video::td_egypt_props_png", "Texture::td_egypt_props_png"
+}
+;Takes and animation section
+;----------------------------------------------------
+
+Takes:  {
+	Current: ""
+}
+;Version 5 settings
+;------------------------------------------------------------------
+
+Version5:  {
+	AmbientRenderSettings:  {
+		Version: 101
+		AmbientLightColor: 0.0,0.0,0.0,0
+	}
+	FogOptions:  {
+		FogEnable: 0
+		FogMode: 0
+		FogDensity: 0.000
+		FogStart: 5.000
+		FogEnd: 25.000
+		FogColor: 0.1,0.1,0.1,1
+	}
+	Settings:  {
+		FrameRate: "24"
+		TimeFormat: 1
+		SnapOnFrames: 0
+		ReferenceTimeIndex: -1
+		TimeLineStartTime: 0
+		TimeLineStopTime: 479181389250
+	}
+	RendererSetting:  {
+		DefaultCamera: "Producer Perspective"
+		DefaultViewingMode: 0
+	}
+}
