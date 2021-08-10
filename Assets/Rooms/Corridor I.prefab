@@ -48384,13 +48384,13 @@ MonoBehaviour:
   Bounds: {fileID: 292429058022904473}
   DeadEndChance: 0
   tiles:
-  - array: 01
-  - array: 01
-  - array: 01
-  - array: 01
+  - array: 000100
+  - array: 000100
+  - array: 000100
+  - array: 000100
   enemiesChance: 0
   entranceRow: 3
-  entranceCol: 0
+  entranceCol: 1
   maxEnemiesAllowed: 0
 --- !u!1 &292429057918129383
 GameObject:
@@ -53548,7 +53548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   row: 0
-  col: 0
+  col: 1
 --- !u!1 &292429058282056939
 GameObject:
   m_ObjectHideFlags: 0
