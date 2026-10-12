@@ -7,23 +7,6 @@ using DG.Tweening;
 using System.Linq;
 
 
-// A Data Structure for queue used in BFS
-public class queueNode
-{
-    // The coordinates of a cell
-    public Tuple<int, int> pt;
-
-    // cell's distance of from the source
-    public int dist;
-
-    public queueNode(Tuple<int, int> pt, int dist)
-    {
-        this.pt = pt;
-        this.dist = dist;
-    }
-};
-
-
 public class MapManager : MonoBehaviour
 {
     [SerializeField] private Material wallMat;
@@ -67,107 +50,186 @@ public class MapManager : MonoBehaviour
     }
 
 
-    // Implementing BFS
-    private int GetPathLength(Tuple<int, int> src, Tuple<int, int> dest)
+    // ------------------------------------------------------------------
+    //  Pathfinding
+    //
+    //  Every enemy paths toward the same destination (the player), so the
+    //  distance to that destination is a property of the grid rather than of
+    //  any one enemy. One breadth-first sweep outward from the destination
+    //  labels each tile with its step count; an enemy then simply reads the
+    //  neighbouring label and walks downhill.
+    //
+    //  This replaces four traversals per enemy move -- one probe per
+    //  direction -- with one sweep, reused for as long as the grid and the
+    //  player's tile stay the same.
+    //
+    //  The grid is mutated mid-turn: an enemy releases the tile it leaves and
+    //  occupies the one it enters. So the field cannot just be built once per
+    //  turn without changing behaviour -- later enemies would stop seeing the
+    //  ones that already moved. Every walkability write bumps gridVersion
+    //  (enemies write through SetTileWalkable, the player's own moves through
+    //  SetCoordsAvailability), which invalidates the field, so it is rebuilt
+    //  exactly when the grid it was derived from no longer holds, and not
+    //  otherwise.
+    //
+    //  Buffers are allocated once and reused, so rebuilding the field
+    //  allocates nothing; the only allocation left per move is the returned
+    //  tuple.
+    // ------------------------------------------------------------------
+
+    private const int UNREACHABLE = 999;
+
+    private static readonly int[] NEIGHBOUR_ROW = { -1, 0, 1, 0 };
+    private static readonly int[] NEIGHBOUR_COL = { 0, 1, 0, -1 };
+
+    private int[] distField;   // row-major: steps from each tile to the cached destination
+    private int[] bfsQueue;    // preallocated FIFO of packed tile indices
+    private int fieldRows, fieldCols;
+    private int gridVersion;
+    private int fieldVersion = -1;
+    private int fieldDestRow = int.MinValue, fieldDestCol = int.MinValue;
+    private Section fieldSection;
+
+    // Walkability changes in the current room. Bumping gridVersion means the
+    // cached field cannot go stale behind our back.
+    public void SetTileWalkable(int row, int col, bool walkable)
     {
+        currPlayerSection.Tiles[row].array[col] = walkable;
+        gridVersion++;
+    }
 
-        int[] rowNum = { -1, 0, 0, 1 };
-        int[] colNum = { 0, -1, 1, 0 };
-        bool[,] visited = new bool[currPlayerSection.Tiles.Length, currPlayerSection.Tiles[0].array.Length];
-        visited[src.Item1, src.Item2] = true;
-        Queue<queueNode> q = new Queue<queueNode>();
+    private bool IsWalkable(int row, int col)
+    {
+        return currPlayerSection.Tiles[row].array[col];
+    }
 
-        queueNode s = new queueNode(src, 0);
-        q.Enqueue(s); // Enqueue source cell
+    private void EnsureDistanceField(Tuple<int, int> dest)
+    {
+        if (distField != null
+            && fieldSection == currPlayerSection
+            && fieldVersion == gridVersion
+            && fieldDestRow == dest.Item1
+            && fieldDestCol == dest.Item2)
+            return;
 
-        // Do a BFS starting from source cell
-        while (q.Count != 0)
+        BuildDistanceField(dest);
+    }
+
+    private void BuildDistanceField(Tuple<int, int> dest)
+    {
+        int rows = currPlayerSection.Tiles.Length;
+        int cols = currPlayerSection.Tiles[0].array.Length;
+
+        if (distField == null || fieldRows != rows || fieldCols != cols)
         {
-            queueNode curr = q.Peek();
-            Tuple<int, int> pt = curr.pt;
+            distField = new int[rows * cols];
+            bfsQueue = new int[rows * cols];
+            fieldRows = rows;
+            fieldCols = cols;
+        }
 
-            // If we have reached the destination cell,
-            // we are done
-            if (pt.Item1 == dest.Item1 && pt.Item2 == dest.Item2)
-                return curr.dist;
+        for (int i = 0; i < distField.Length; i++)
+            distField[i] = UNREACHABLE;
 
-            // Otherwise dequeue the front cell
-            // in the queue and enqueue
-            // its adjacent cells
-            q.Dequeue();
+        int head = 0, tail = 0;
+
+        // The destination is always enterable, whether or not it is walkable.
+        int destIndex = dest.Item1 * cols + dest.Item2;
+        distField[destIndex] = 0;
+        bfsQueue[tail++] = destIndex;
+
+        while (head < tail)
+        {
+            int current = bfsQueue[head++];
+            int row = current / cols;
+            int col = current - row * cols;
+            int step = distField[current] + 1;
 
             for (int i = 0; i < 4; i++)
             {
-                int row = pt.Item1 + rowNum[i];
-                int col = pt.Item2 + colNum[i];
+                int r = row + NEIGHBOUR_ROW[i];
+                int c = col + NEIGHBOUR_COL[i];
 
-                // if adjacent cell is valid, has path
-                // and not visited yet, enqueue it.
-                if (IsValidCoord(row, col))
-                {
-                    if ((!visited[row, col] && currPlayerSection.Tiles[row].array[col]) || (row == dest.Item1 && col == dest.Item2))
-                    {
-                        // mark cell as visited and enqueue it
-                        visited[row, col] = true;
-                        queueNode Adjcell = new queueNode
-                                   (new Tuple<int, int>(row, col),
-                                        curr.dist + 1);
-                        q.Enqueue(Adjcell);
-                    }
-                }
+                if (!IsValidCoord(r, c))
+                    continue;
+
+                int index = r * cols + c;
+
+                if (distField[index] != UNREACHABLE)
+                    continue;              // already labelled by a shorter path
+                if (!IsWalkable(r, c))
+                    continue;              // wall, or a tile another enemy holds
+
+                distField[index] = step;
+                bfsQueue[tail++] = index;
             }
         }
 
-        return 999;
+        fieldSection = currPlayerSection;
+        fieldVersion = gridVersion;
+        fieldDestRow = dest.Item1;
+        fieldDestCol = dest.Item2;
+    }
+
+    private int StepsToDest(int row, int col)
+    {
+        return distField[row * fieldCols + col];
     }
 
 
     public Tuple<Direction, Direction, bool> GetBestMove(Tuple<int, int> src, Tuple<int, int> dest)
     {
+        EnsureDistanceField(dest);
+
         int up, right, down, left;
-        up = right = down = left = 999;
+        up = right = down = left = UNREACHABLE;
 
         // Up
         if (IsValidCoord(src.Item1 - 1, src.Item2))
         {
-            if (PlayerCoords.Item1 == src.Item1 - 1 && PlayerCoords.Item2 == src.Item2) { return new Tuple<Direction, Direction, bool>(upDirs[0], currDirs[0], true); }
+            if (PlayerCoords.Item1 == src.Item1 - 1 && PlayerCoords.Item2 == src.Item2)
+                return new Tuple<Direction, Direction, bool>(upDirs[0], currDirs[0], true);
 
-            if (currPlayerSection.Tiles[src.Item1 - 1].array[src.Item2])
-                up = GetPathLength(new Tuple<int, int>(src.Item1 - 1, src.Item2), dest);
+            if (IsWalkable(src.Item1 - 1, src.Item2))
+                up = StepsToDest(src.Item1 - 1, src.Item2);
         }
         // Right
         if (IsValidCoord(src.Item1, src.Item2 + 1))
         {
-            if (PlayerCoords.Item1 == src.Item1 && PlayerCoords.Item2 == src.Item2 + 1) { return new Tuple<Direction, Direction, bool>(upDirs[1], currDirs[1], true); }
+            if (PlayerCoords.Item1 == src.Item1 && PlayerCoords.Item2 == src.Item2 + 1)
+                return new Tuple<Direction, Direction, bool>(upDirs[1], currDirs[1], true);
 
-            if (currPlayerSection.Tiles[src.Item1].array[src.Item2 + 1])
-                right = GetPathLength(new Tuple<int, int>(src.Item1, src.Item2 + 1), dest);
+            if (IsWalkable(src.Item1, src.Item2 + 1))
+                right = StepsToDest(src.Item1, src.Item2 + 1);
         }
-
+        // Down
         if (IsValidCoord(src.Item1 + 1, src.Item2))
         {
-            if (PlayerCoords.Item1 == src.Item1 + 1 && PlayerCoords.Item2 == src.Item2) { return new Tuple<Direction, Direction, bool>(upDirs[2], currDirs[2], true); }
+            if (PlayerCoords.Item1 == src.Item1 + 1 && PlayerCoords.Item2 == src.Item2)
+                return new Tuple<Direction, Direction, bool>(upDirs[2], currDirs[2], true);
 
-            if (currPlayerSection.Tiles[src.Item1 + 1].array[src.Item2])
-                down = GetPathLength(new Tuple<int, int>(src.Item1 + 1, src.Item2), dest);
+            if (IsWalkable(src.Item1 + 1, src.Item2))
+                down = StepsToDest(src.Item1 + 1, src.Item2);
         }
-
+        // Left
         if (IsValidCoord(src.Item1, src.Item2 - 1))
         {
-            if (PlayerCoords.Item1 == src.Item1 && PlayerCoords.Item2 == src.Item2 - 1) { return new Tuple<Direction, Direction, bool>(upDirs[3], currDirs[3], true); }
+            if (PlayerCoords.Item1 == src.Item1 && PlayerCoords.Item2 == src.Item2 - 1)
+                return new Tuple<Direction, Direction, bool>(upDirs[3], currDirs[3], true);
 
-            if (currPlayerSection.Tiles[src.Item1].array[src.Item2 - 1])
-                left = GetPathLength(new Tuple<int, int>(src.Item1, src.Item2 - 1), dest);
+            if (IsWalkable(src.Item1, src.Item2 - 1))
+                left = StepsToDest(src.Item1, src.Item2 - 1);
         }
 
-        int[] dirs = { up, right, down, left };
-        int minIndex = Array.IndexOf(dirs, dirs.Min());
+        // Lowest label wins; ties resolve to the earliest direction, as before.
+        int minIndex = 0;
+        int minSteps = up;
+        if (right < minSteps) { minSteps = right; minIndex = 1; }
+        if (down < minSteps) { minSteps = down; minIndex = 2; }
+        if (left < minSteps) { minSteps = left; minIndex = 3; }
 
-        if (dirs[minIndex] == 999 || dirs[minIndex] == 0)
+        if (minSteps == UNREACHABLE || minSteps == 0)
             return new Tuple<Direction, Direction, bool>(Direction.None, Direction.None, false);
-
-        print(upDirs[minIndex] + " " + currDirs[minIndex]);
-        print(src.Item1 + " " + src.Item2);
 
         // (Real direction, Relative direction, Will the enemy attack?)
         return new Tuple<Direction, Direction, bool>(upDirs[minIndex], currDirs[minIndex], false);
@@ -356,7 +418,11 @@ public class MapManager : MonoBehaviour
         currDirs = upDirs;
     }
 
-    private void SetCoordsAvailability(Section room, Tuple<int, int> coords, bool isAvailable) { room.Tiles[coords.Item1].array[coords.Item2] = isAvailable; }
+    private void SetCoordsAvailability(Section room, Tuple<int, int> coords, bool isAvailable)
+    {
+        room.Tiles[coords.Item1].array[coords.Item2] = isAvailable;
+        gridVersion++;
+    }
 
     public bool CheckPlayerMove(Direction dir)
     {

@@ -82,7 +82,7 @@ public class TurnManager : MonoBehaviour
                     }
                     else if (data.Item2 != Direction.None)
                     {
-                        mapManager.CurrPlayerSection.Tiles[mummies[i].Row].array[mummies[i].Col] = true;
+                        mapManager.SetTileWalkable(mummies[i].Row, mummies[i].Col, true);
                         mummies[i].Move(data.Item2);
                         switch (data.Item1)
                         {
@@ -91,7 +91,7 @@ public class TurnManager : MonoBehaviour
                             case Direction.Right: mummies[i].Col += 1; break;
                             case Direction.Left: mummies[i].Col -= 1; break;
                         }
-                        mapManager.CurrPlayerSection.Tiles[mummies[i].Row].array[mummies[i].Col] = false;
+                        mapManager.SetTileWalkable(mummies[i].Row, mummies[i].Col, false);
 
                     }
                     yield return new WaitForSeconds(2f);
@@ -169,7 +169,7 @@ public class TurnManager : MonoBehaviour
         {
             if (!tup.Item1.IsAlive)
             {
-                mapManager.CurrPlayerSection.Tiles[tup.Item1.Row].array[tup.Item1.Col] = true;
+                mapManager.SetTileWalkable(tup.Item1.Row, tup.Item1.Col, true);
                 mummies.Remove(tup.Item1);
                 spawnManager.DespawnMummy(tup.Item1.gameObject);
             }
@@ -234,7 +234,7 @@ public class TurnManager : MonoBehaviour
                 col = Random.Range(0, currSectionMap[row].Length);
             }
 
-            mapManager.CurrPlayerSection.Tiles[row].array[col] = false;
+            mapManager.SetTileWalkable(row, col, false);
             Mummy mummy = spawnManager.SpawnMummy(mapManager.FindCoordPos(row, col)).GetComponent<Mummy>();
             mummy.Row = row;
             mummy.Col = col;
